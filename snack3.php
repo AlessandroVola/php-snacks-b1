@@ -45,15 +45,28 @@ Creare un array di array. Ogni array figlio avrà come chiave una data in questo
     ];
 
 
-    for ($i = 0;$i< count($posts);$i++){
+    $postDates = array_keys($posts);
 
-        $date = $posts[$i];
+    
 
-        ?>
-            <h4><?= $date ?></h4>
-            <p><?= $date['title'] ?></p>
-            <p><?= $date['author'] ?></p> 
-            <p><?= $date['text'] ?></p>  
-        <?php
+    for ($i = 0; $i< count($postDates); $i++){
+
+        $currentDate = $postDates[$i];
+
+        echo ('<h2>'. $currentDate . '</h2>' );
+
+        $currentPosts = $posts[$currentDate];
+
+        for($postCounter = 0; $postCounter < count($currentPosts); $postCounter++){
+            $post = $currentPosts[$postCounter];
+            ?>
+                <div>
+                    <h3> <?=$post['title'] ?> </h3>
+                    <h4> <?=$post['author'] ?> </h4>
+                    <p> <?=$post['text'] ?> </p>
+                </div>
+            <?php
+
+        }
     }
 ?>
